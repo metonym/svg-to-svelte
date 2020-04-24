@@ -23,8 +23,7 @@ export function generate(filePath: string, folder: string) {
 
   fs.writeFileSync(
     path.join(moduleFolder, `${moduleName}.svelte`),
-    // @ts-ignore
-    format(toSvelte(source).template, { parser: "svelte" })
+    toSvelte(source).template
   );
 
   fs.writeFileSync(

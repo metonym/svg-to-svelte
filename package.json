@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "prettier": "1.19.1",
-    "prettier-plugin-svelte": "0.7.0",
     "svelte": "^3.21.0",
     "svg-parser": "^2.0.4",
     "unist-util-visit": "^2.0.2"
