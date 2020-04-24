@@ -49,6 +49,7 @@ export function generate(
 }
 
 interface Options {
+  clean?: boolean;
   onModuleName?: (moduleName: string) => string;
 }
 
@@ -57,7 +58,10 @@ export function generateFromFolder(
   folder: string = "lib",
   options: Options = {}
 ) {
-  cleanDir(folder);
+  if (options.clean) {
+    cleanDir(folder);
+  }
+
   const start = performance.now();
   const moduleNames: string[] = [];
 
