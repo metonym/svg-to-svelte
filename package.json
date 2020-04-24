@@ -1,0 +1,48 @@
+{
+  "name": "svg-to-svelte",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Convert SVG files to Svelte components",
+  "author": "Eric Liu (https://github.com/metonym)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "develop": "tsnd --respawn src",
+    "test:tdd": "tsnd --respawn node_modules/tape/bin/tape src/**/*.test.ts",
+    "prepack": "tsc"
+  },
+  "dependencies": {
+    "prettier": "1.19.1",
+    "prettier-plugin-svelte": "0.7.0",
+    "svelte": "^3.21.0",
+    "svg-parser": "^2.0.4",
+    "unist-util-visit": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/prettier": "^2.0.0",
+    "@types/svg-parser": "^2.0.1",
+    "@types/tape": "^4.13.0",
+    "tape": "^4.13.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metonym/svg-to-svelte.git"
+  },
+  "homepage": "https://github.com/metonym/svg-to-svelte",
+  "bugs": "https://github.com/metonym/svg-to-svelte/issues",
+  "keywords": [
+    "svelte",
+    "svelte component",
+    "svg",
+    "icon",
+    "library"
+  ],
+  "files": [
+    "dist"
+  ]
+}
