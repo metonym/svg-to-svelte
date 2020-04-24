@@ -12,9 +12,17 @@ export function cleanDir(folder: string) {
   fs.mkdirSync(dir);
 }
 
-export function generate(filePath: string, folder: string) {
-  const fileName = path.basename(filePath);
-  const moduleName = toModuleName(fileName);
+export function generate(
+  filePath: string,
+  folder: string,
+  options: Options = {}
+) {
+  let moduleName = toModuleName(path.basename(filePath));
+
+  if (options.onModuleName) {
+    moduleName = options.onModuleName(moduleName);
+  }
+
   const moduleFolder = path.join(process.cwd(), folder, moduleName);
 
   fs.mkdirSync(moduleFolder);
@@ -40,9 +48,14 @@ export function generate(filePath: string, folder: string) {
   };
 }
 
+interface Options {
+  onModuleName?: (moduleName: string) => string;
+}
+
 export function generateFromFolder(
   source_folder: string,
-  folder: string = "lib"
+  folder: string = "lib",
+  options: Options = {}
 ) {
   cleanDir(folder);
   const start = performance.now();
@@ -54,7 +67,8 @@ export function generateFromFolder(
     .map((file) => {
       const { moduleName, rootExport } = generate(
         path.join(process.cwd(), source_folder, file),
-        folder
+        folder,
+        options
       );
 
       moduleNames.push(moduleName);
