@@ -15,12 +15,10 @@
     "prepack": "tsc"
   },
   "dependencies": {
-    "prettier": "1.19.1",
     "svg-parser": "^2.0.4",
     "unist-util-visit": "^2.0.2"
   },
   "devDependencies": {
-    "@types/prettier": "^2.0.0",
     "@types/svg-parser": "^2.0.1",
     "@types/tape": "^4.13.0",
     "tape": "^4.13.2",

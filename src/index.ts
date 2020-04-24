@@ -1,3 +1,3 @@
-export { toModuleName } from "./utils";
+export { cleanDir, generateFromFolder } from "./generate";
 export { toSvelte } from "./to-svelte";
-export { cleanDir, generate, generateFromFolder } from "./generate";
+export { toModuleName } from "./utils";

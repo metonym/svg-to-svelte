@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - support slots
 
+## [0.3.0](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.0) - 2020-04-24
+
+- Remove `generate` method
+
+- Remove `svelte`, `prettier` from dependencies
+
 ## [0.2.1](https://github.com/metonym/svg-to-svelte/releases/tag/v0.2.1) - 2020-04-24
 
 - Support clean option in `generateFromFolder`
