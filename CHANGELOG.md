@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- `onModuleName` hook (`(moduleName: string) => moduleName`)
+
+- generate documentation
+
 - custom svg element properties (filter, add)
 
 - inject script/styles
