@@ -28,7 +28,7 @@ The second parameter is the output directory. By default, it is "lib."
 ```js
 const { generateFromFolder } = require("svg-to-svelte");
 
-generateFromFolder("node_modules/gestalt/src/icons", "lib");
+generateFromFolder("node_modules/gestalt/src/icons", "lib", { clean: true });
 // reads all SVG files from the path "node_modules/gestalt/src/icons"
 // generates a Svelte component per SVG file in the "lib" output folder
 ```
