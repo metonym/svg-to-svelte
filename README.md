@@ -9,6 +9,14 @@ This library uses [svg-parser](https://github.com/Rich-Harris/svg-parser) to con
 
 More generally, this utility experiments with augmenting HTML into Svelte.
 
+The following icon libraries were generated using `svg-to-svelte`:
+
+- **[svelte-octicons](https://github.com/metonym/svelte-octicons)**: GitHub octicons/icons as Svelte components
+
+- **[svelte-gestalt-icons](https://github.com/metonym/svelte-gestalt-icons)**: Pinterest Gestalt SVG icons as Svelte components
+
+- **[svelte-spectrum icons](https://github.com/metonym/svelte-spectrum-icons)**: Adobe Spectrum Workflow and UI SVG icons as Svelte components
+
 ## Install
 
 Note: this module requires Node.js version 12 or greater.
