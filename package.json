@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/svg-parser": "^2.0.1",
     "@types/tape": "^4.13.0",
-    "tape": "^4.13.2",
+    "tape": "^5.0.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   },
