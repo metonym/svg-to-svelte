@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - support slots
 
+## [0.3.2](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.2) - 2020-04-03
+
+- Fix to ensure output directory is created
+
 ## [0.3.1](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.1) - 2020-04-03
 
 - Promisify `fs` methods

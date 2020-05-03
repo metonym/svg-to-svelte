@@ -29,7 +29,7 @@ export async function generateFromFolder(
   options: Options = {}
 ) {
   if (options.clean) {
-    cleanDir(folder);
+    await cleanDir(folder);
   }
 
   const start = performance.now();
