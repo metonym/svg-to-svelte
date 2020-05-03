@@ -3,12 +3,19 @@ import * as path from "path";
 import { toModuleName } from "./utils";
 import { toSvelte } from "./to-svelte";
 import { performance } from "perf_hooks";
+import { promisify } from "util";
 
-export function cleanDir(folder: string) {
+const readdir = promisify(fs.readdir);
+const rmdir = promisify(fs.rmdir);
+const mkdir = promisify(fs.mkdir);
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
+
+export async function cleanDir(folder: string) {
   const dir = path.join(process.cwd(), folder);
 
-  fs.rmdirSync(dir, { recursive: true });
-  fs.mkdirSync(dir);
+  await rmdir(dir, { recursive: true });
+  await mkdir(dir);
 }
 
 interface Options {
@@ -16,7 +23,7 @@ interface Options {
   onModuleName?: (moduleName: string) => string;
 }
 
-export function generateFromFolder(
+export async function generateFromFolder(
   source_folder: string,
   folder: string = "lib",
   options: Options = {}
@@ -27,11 +34,12 @@ export function generateFromFolder(
 
   const start = performance.now();
   const moduleNames: string[] = [];
+  const imports: string[] = [];
+  const files = await readdir(path.join(process.cwd(), source_folder));
 
-  const imports = fs
-    .readdirSync(path.join(process.cwd(), source_folder))
+  files
     .filter((file) => file.endsWith(".svg"))
-    .map((file) => {
+    .forEach(async (file) => {
       const filePath = path.join(process.cwd(), source_folder, file);
 
       let moduleName = toModuleName(path.basename(filePath));
@@ -42,26 +50,24 @@ export function generateFromFolder(
 
       const moduleFolder = path.join(process.cwd(), folder, moduleName);
 
-      fs.mkdirSync(moduleFolder);
+      await mkdir(moduleFolder);
 
-      const source = fs.readFileSync(filePath).toString();
+      const source = await readFile(filePath, "utf-8");
 
-      fs.writeFileSync(
+      await writeFile(
         path.join(moduleFolder, `${moduleName}.svelte`),
         toSvelte(source).template
       );
-
-      fs.writeFileSync(
+      await writeFile(
         path.join(moduleFolder, "index.js"),
         `import ${moduleName} from "./${moduleName}.svelte";\nexport { ${moduleName} };\nexport default ${moduleName};`
       );
 
       moduleNames.push(moduleName);
-
-      return `export { ${moduleName} } from "./${moduleName}";`;
+      imports.push(`export { ${moduleName} } from "./${moduleName}";`);
     });
 
-  fs.writeFileSync(
+  await writeFile(
     path.join(process.cwd(), folder, "index.js"),
     imports.join("\n")
   );
