@@ -48,6 +48,9 @@ export async function generateFromFolder(
         moduleName = options.onModuleName(moduleName);
       }
 
+      moduleNames.push(moduleName);
+      imports.push(`export { ${moduleName} } from "./${moduleName}";`);
+
       const moduleFolder = path.join(process.cwd(), folder, moduleName);
 
       await mkdir(moduleFolder);
@@ -62,15 +65,14 @@ export async function generateFromFolder(
         path.join(moduleFolder, "index.js"),
         `import ${moduleName} from "./${moduleName}.svelte";\nexport { ${moduleName} };\nexport default ${moduleName};`
       );
-
-      moduleNames.push(moduleName);
-      imports.push(`export { ${moduleName} } from "./${moduleName}";`);
     });
 
   await writeFile(
     path.join(process.cwd(), folder, "index.js"),
     imports.join("\n")
   );
+
+  console.log(imports.length);
 
   process.stdout.write(
     `⚡ Converted ${imports.length} SVG files in ${(
