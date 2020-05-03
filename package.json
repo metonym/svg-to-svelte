@@ -1,6 +1,6 @@
 {
   "name": "svg-to-svelte",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "description": "Convert SVG files to Svelte components",
   "author": "Eric Liu (https://github.com/metonym)",
