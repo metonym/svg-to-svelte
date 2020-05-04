@@ -3,10 +3,10 @@ export function toModuleName(name: string) {
     .replace(/\_+|-+/g, " ")
     .replace(/\.svg/g, "")
     .split(" ")
-    .map((_) => {
+    .map((_, i) => {
       let first_char = _.slice(0, 1);
 
-      if (first_char.match(/[0-9]/)) {
+      if (i === 0 && first_char.match(/[0-9]/)) {
         first_char = "_" + first_char;
       }
 
