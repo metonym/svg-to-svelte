@@ -19,7 +19,7 @@ The following icon libraries were generated using `svg-to-svelte`:
 
 ## Install
 
-Note: this module requires Node.js version 12 or greater.
+**Note: this module requires Node.js version 12 or greater.**
 
 ```bash
 yarn add -D svg-to-svelte
@@ -36,9 +36,13 @@ The second parameter is the output directory. By default, it is "lib."
 ```js
 const { generateFromFolder } = require("svg-to-svelte");
 
-generateFromFolder("node_modules/gestalt/src/icons", "lib", { clean: true });
-// reads all SVG files from the path "node_modules/gestalt/src/icons"
-// generates a Svelte component per SVG file in the "lib" output folder
+(async () => {
+  await generateFromFolder("node_modules/gestalt/src/icons", "lib", {
+    clean: true,
+  });
+  // reads all SVG files from the path "node_modules/gestalt/src/icons"
+  // generates a Svelte component per SVG file in the "lib" output folder
+})();
 ```
 
 #### Options
@@ -88,7 +92,9 @@ The `cleanDir` method is a utility to recursively remove a file directory and cr
 ```ts
 const { cleanDir } = require("svg-to-svelte");
 
-cleanDir("lib");
+(async () => {
+  await cleanDir("lib");
+})();
 ```
 
 ## [Changelog](CHANGELOG.md)
