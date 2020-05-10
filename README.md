@@ -14,9 +14,7 @@ This library uses [svg-parser](https://github.com/Rich-Harris/svg-parser) to con
 
 More generally, this utility experiments with augmenting HTML into Svelte.
 
-The following icon libraries were generated using `svg-to-svelte`:
-
-- **[svelte-octicons](https://github.com/metonym/svelte-octicons)**: GitHub octicons/icons as Svelte components
+Example icon libraries generated using `svg-to-svelte`:
 
 - **[svelte-gestalt-icons](https://github.com/metonym/svelte-gestalt-icons)**: Pinterest Gestalt SVG icons as Svelte components
 
