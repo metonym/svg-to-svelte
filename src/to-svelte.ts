@@ -17,7 +17,7 @@ export function toSvelte(svg: string) {
   visit(parse(svg), (node) => {
     if (node.type === "element") {
       if (node.tagName === "svg") {
-        svg_props.push(mapProps(node.properties));
+        svg_props.unshift(mapProps(node.properties));
       } else {
         svg_children.push(`<${node.tagName} ${mapProps(node.properties)} />`);
       }
