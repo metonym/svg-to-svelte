@@ -21,7 +21,15 @@ export function toSvelte(svg: string, options: { slot?: boolean } = {}) {
   visit(parse(svg), (node) => {
     if (node.type === "element") {
       if (node.tagName === "svg") {
-        svg_props.unshift(mapProps(node.properties));
+        mapProps(node.properties)
+          .split(" ")
+          .forEach((prop) => {
+            if (prop.startsWith("class=")) {
+              svg_props.push(prop);
+            } else {
+              svg_props.unshift(prop);
+            }
+          });
       } else {
         svg_children.push(`<${node.tagName} ${mapProps(node.properties)} />`);
       }

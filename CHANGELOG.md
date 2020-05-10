@@ -13,7 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - inject script/styles
 
-- support slots
+- allow direction for adding a prop (i.e. before/after `$$restProps`)
+
+## [0.3.8](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.8) - 2020-05-10
+
+- Hot fix: append class after `$$restProps`
 
 ## [0.3.7](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.7) - 2020-05-10
 
