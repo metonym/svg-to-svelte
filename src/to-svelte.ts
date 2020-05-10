@@ -2,7 +2,7 @@ import { parse } from "svg-parser";
 import * as visit from "unist-util-visit";
 import { mapProps } from "./utils";
 
-export function toSvelte(svg: string) {
+export function toSvelte(svg: string, options: { slot?: boolean } = {}) {
   const svg_props = [
     "{...$$restProps}",
     "on:click",
@@ -12,6 +12,10 @@ export function toSvelte(svg: string) {
     "on:keydown",
   ];
   const svg_children: string[] = [];
+
+  if (options.slot) {
+    svg_children.push("<slot />");
+  }
 
   // @ts-ignore
   visit(parse(svg), (node) => {

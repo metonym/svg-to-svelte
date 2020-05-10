@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - support slots
 
+## [0.3.7](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.7) - 2020-05-10
+
+- Support optional `slot` for `toSvelte`
+
 ## [0.3.6](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.6) - 2020-05-10
 
 - `$$restProps` should override default SVG attributes

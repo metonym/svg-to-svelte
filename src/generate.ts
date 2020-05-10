@@ -13,20 +13,17 @@ const writeFile = promisify(fs.writeFile);
 
 export async function cleanDir(folder: string) {
   const dir = path.join(process.cwd(), folder);
-
   await rmdir(dir, { recursive: true });
   await mkdir(dir);
-}
-
-interface Options {
-  clean?: boolean;
-  onModuleName?: (moduleName: string) => string;
 }
 
 export async function generateFromFolder(
   source_folder: string,
   folder: string = "lib",
-  options: Options = {}
+  options: {
+    clean?: boolean;
+    onModuleName?: (moduleName: string) => string;
+  } = {}
 ) {
   if (options.clean) {
     await cleanDir(folder);
@@ -54,7 +51,6 @@ export async function generateFromFolder(
       const moduleFolder = path.join(process.cwd(), folder, moduleName);
 
       await mkdir(moduleFolder);
-
       await writeFile(
         path.join(moduleFolder, "index.js"),
         `import ${moduleName} from "./${moduleName}.svelte";\nexport { ${moduleName} };\nexport default ${moduleName};`
