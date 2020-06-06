@@ -5,7 +5,13 @@
 
 > Convert SVG files to Svelte components.
 
-This library uses [svg-parser](https://github.com/Rich-Harris/svg-parser) to convert SVG files into Svelte components. The primary use case is to batch process entire icon libraries to be consumable in Svelte.
+This library uses [svg-parser](https://github.com/Rich-Harris/svg-parser) to convert SVG icon libraries into Svelte components.
+
+This is accomplished with the following:
+
+- pass `$$restProps` to top-level SVG element
+- forward click, mouseover, mouseenter, mouseleave, keydown events
+- pass `slot` as a child
 
 ```diff
 - <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 1a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3h10zM7 20h10v-4H7v4z" fill="#767676" fill-rule="evenodd"/></svg>
