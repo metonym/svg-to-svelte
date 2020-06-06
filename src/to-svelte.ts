@@ -1,4 +1,4 @@
-import { parse } from "svg-parser";
+import { parse, Node } from "svg-parser";
 import * as visit from "unist-util-visit";
 import { mapProps } from "./utils";
 
@@ -17,8 +17,7 @@ export function toSvelte(svg: string, options: { slot?: boolean } = {}) {
     svg_children.push("<slot />");
   }
 
-  // @ts-ignore
-  visit(parse(svg), (node) => {
+  visit(parse(svg) as any, (node: any) => {
     if (node.type === "element") {
       if (node.tagName === "svg") {
         mapProps(node.properties)
