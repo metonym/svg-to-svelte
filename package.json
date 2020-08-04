@@ -4,8 +4,8 @@
   "license": "MIT",
   "description": "Convert SVG files to Svelte components",
   "author": "Eric Liu (https://github.com/metonym)",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=12"
   },
@@ -16,14 +16,12 @@
     "prepack": "tsc"
   },
   "dependencies": {
-    "svg-parser": "^2.0.4",
-    "unist-util-visit": "^2.0.2"
+    "svelte": "^3.24.0"
   },
   "devDependencies": {
-    "@types/node": "^14.0.11",
-    "@types/svg-parser": "^2.0.1",
-    "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.9.5"
+    "@types/node": "^14.0.27",
+    "ts-node-dev": "^1.0.0-pre.56",
+    "typescript": "^3.9.7"
   },
   "repository": {
     "type": "git",
