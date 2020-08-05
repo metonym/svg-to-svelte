@@ -1,43 +1,32 @@
-import { parse, Node } from "svg-parser";
-import * as visit from "unist-util-visit";
-import { mapProps } from "./utils";
+import { walk, parse } from "svelte/compiler";
 
-export function toSvelte(svg: string, options: { slot?: boolean } = {}) {
-  const svg_props = [
-    "{...$$restProps}",
-    "on:click",
-    "on:mouseover",
-    "on:mouseenter",
-    "on:mouseleave",
-    "on:keydown",
-  ];
-  const svg_children: string[] = [];
+export function toSvelte(svg: string) {
+  let svg_attributes = "";
+  let svg_children = "";
 
-  if (options.slot) {
-    svg_children.push("<slot />");
-  }
+  walk(parse(svg), {
+    enter(node: any) {
+      if (node.type === "Element" && node.name === "svg") {
+        node.children.forEach((child: any) => {
+          const { start, end } = child;
+          svg_children += svg.slice(start, end);
+        });
 
-  visit(parse(svg) as any, (node: any) => {
-    if (node.type === "element") {
-      if (node.tagName === "svg") {
-        mapProps(node.properties)
-          .split(" ")
-          .forEach((prop) => {
-            if (prop.startsWith("class=")) {
-              svg_props.push(prop);
-            } else {
-              svg_props.unshift(prop);
-            }
-          });
-      } else {
-        svg_children.push(`<${node.tagName} ${mapProps(node.properties)} />`);
+        node.attributes.forEach((attr: any) => {
+          const { name, value } = attr;
+          if (name === "class") {
+            value[0].raw.split(" ").forEach((name: any) => {
+              svg_attributes += ` class:${name}={true}`;
+            });
+          } else {
+            svg_attributes += ` ${name}="${value[0].raw}"`;
+          }
+        });
       }
-    }
+    },
   });
 
   return {
-    props: svg_props,
-    children: svg_children,
-    template: `<svg ${svg_props.join(" ")}>${svg_children.join("")}</svg>`,
+    template: `<svg${svg_attributes} {...$$restProps} on:click on:mouseover on:mouseenter on:mouseleave on:keydown><slot />${svg_children}</svg>`,
   };
 }
