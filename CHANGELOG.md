@@ -8,12 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 - generate documentation
-
 - custom svg element properties (filter, add)
-
 - inject script/styles
-
 - allow direction for adding a prop (i.e. before/after `$$restProps`)
+
+## [1.0.0](https://github.com/metonym/svg-to-svelte/releases/tag/v1.0.0) - 2020-08-04
+
+- replace svg-parser with svelte compiler to componentize svg (Breaking change: `toSvelte` method no longer accepts a second parameter for options)
 
 ## [0.3.8](https://github.com/metonym/svg-to-svelte/releases/tag/v0.3.8) - 2020-05-10
 
