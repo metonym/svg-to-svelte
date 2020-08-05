@@ -7,7 +7,7 @@
 
 This library uses [svg-parser](https://github.com/Rich-Harris/svg-parser) to convert SVG icon libraries into Svelte components.
 
-This is accomplished with the following:
+This is accomplished by the following:
 
 - pass `$$restProps` to top-level SVG element
 - forward click, mouseover, mouseenter, mouseleave, keydown events
@@ -59,7 +59,7 @@ const { generateFromFolder } = require("svg-to-svelte");
 An optional third argument passed to `generateFromFolder` include:
 
 ```ts
-{
+interface GenerateFromFolderOptions {
   clean: boolean; // remove and create output directory
   onModuleName: (moduleName: string) => string; // called when the moduleName is created
 }
@@ -72,11 +72,9 @@ The `toSvelte` method converts an SVG string to Svelte.
 ```js
 const { toSvelte } = require("svg-to-svelte");
 
-const result = toSvelte(`<svg ...></svg>`, { slot: true });
+const result = toSvelte(`<svg ...></svg>`);
 /**
  * `result.template`: Svelte file as a string
- * `result.props`: Props passed to the top-level SVG element; this includes `...$$restProps` and forwarded events
- * `result.children`: Children elements of the SVG element
  */
 ```
 

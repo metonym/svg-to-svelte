@@ -1,6 +1,6 @@
 import { walk, parse } from "svelte/compiler";
 
-export function toSvelte(svg: string, options: { slot?: boolean } = {}) {
+export function toSvelte(svg: string) {
   let svg_attributes = "";
   let svg_children = "";
 
@@ -27,6 +27,6 @@ export function toSvelte(svg: string, options: { slot?: boolean } = {}) {
   });
 
   return {
-    template: `<svg${svg_attributes} {...$$restProps} on:click on:mouseover on:mouseenter on:mouseleave on:keydown>${svg_children}</svg>`,
+    template: `<svg${svg_attributes} {...$$restProps} on:click on:mouseover on:mouseenter on:mouseleave on:keydown><slot />${svg_children}</svg>`,
   };
 }
