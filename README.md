@@ -5,26 +5,44 @@
 
 > Convert SVG files to Svelte components.
 
-This library uses [svg-parser](https://github.com/Rich-Harris/svg-parser) to convert SVG icon libraries into Svelte components.
+## Background
+
+Today, a comprehensive UI design system typically ships with icons that underline its brand. Usually, icon components are generated from a folder containing raw SVG files. The reason for "componentizing" SVG files is to make it easier to consume in a library or framework like React, Vue, or Angular.
+
+Svelte is a relatively new language; there are not many existing design systems that implement SVG icons as Svelte components.
+
+This library uses the Svelte compiler to convert SVG icon libraries into Svelte components.
 
 This is accomplished by the following:
 
-- pass `$$restProps` to top-level SVG element
-- forward click, mouseover, mouseenter, mouseleave, keydown events
-- pass `slot` as a child
+- forward `$$restProps` to the SVG element
+- forward common events: `click`, `mouseover`, `mouseenter`, `mouseleave`, `keydown`
+- enable the default `slot`
 
 ```diff
 - <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M17 1a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3h10zM7 20h10v-4H7v4z" fill="#767676" fill-rule="evenodd"/></svg>
 + <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" {...$$restProps} on:click on:mouseover on:mouseenter on:mouseleave on:keydown><slot /><path d="M17 1a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3h10zM7 20h10v-4H7v4z" fill="#767676" fill-rule="evenodd" /></svg>
 ```
 
-More generally, this utility experiments with augmenting HTML into Svelte.
+More generally, this utility experiments with augmenting plain HTML into Svelte.
 
-Example icon libraries generated using `svg-to-svelte`:
+Icon libraries generated using `svg-to-svelte`:
 
-- **[svelte-gestalt-icons](https://github.com/metonym/svelte-gestalt-icons)**: Pinterest Gestalt SVG icons as Svelte components
+- **[svelte-atlastkit-icons](https://github.com/metonym/svelte-atlastkit-icons)** (Atlassian Atlaskit)
 
-- **[svelte-spectrum icons](https://github.com/metonym/svelte-spectrum-icons)**: Adobe Spectrum Workflow and UI SVG icons as Svelte components
+- **[svelte-baseui-icons](https://github.com/metonym/svelte-baseui-icons)**: (Uber Base Web)
+
+- **[svelte-bootstrap-icons](https://github.com/metonym/svelte-bootstrap-icons)** (Bootstrap)
+
+- **[svelte-eui-icons](https://github.com/metonym/svelte-eui-icons)** (Elastic EUI)
+
+- **[svelte-gestalt-icons](https://github.com/metonym/svelte-gestalt-icons)** (Pinterest Gestalt)
+
+- **[svelte-leafygreen-icons](https://github.com/metonym/svelte-leafygreen-icons)**: (MongoDB Leafygreen)
+
+- **[svelte-polaris-icons](https://github.com/metonym/svelte-polaris-icons)** (Shopify Polaris)
+
+- **[svelte-spectrum-icons](https://github.com/metonym/svelte-spectrum-icons)** (Adobe Spectrum)
 
 ## Install
 
