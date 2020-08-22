@@ -33,6 +33,7 @@ export async function generateFromFolder(
   const moduleNames: string[] = [];
   const imports: string[] = [];
   const files = await readdir(path.join(process.cwd(), source_folder));
+  const generatedFiles = new Set<string>();
 
   files
     .filter((file) => file.endsWith(".svg"))
@@ -40,6 +41,13 @@ export async function generateFromFolder(
       const filePath = path.join(process.cwd(), source_folder, file);
 
       let moduleName = toModuleName(path.basename(filePath));
+
+      if (generatedFiles.has(moduleName)) {
+        process.stdout.write(`"${moduleName}" already exists.\n`);
+        return;
+      }
+
+      generatedFiles.add(moduleName);
 
       if (options.onModuleName) {
         moduleName = options.onModuleName(moduleName);

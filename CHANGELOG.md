@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - inject script/styles
 - allow direction for adding a prop (i.e. before/after `$$restProps`)
 
+## [1.0.1](https://github.com/metonym/svg-to-svelte/releases/tag/v1.0.1) - 2020-08-22
+
+- fix `generateFromFolder` to handle duplicate module names
+
 ## [1.0.0](https://github.com/metonym/svg-to-svelte/releases/tag/v1.0.0) - 2020-08-04
 
 - replace svg-parser with svelte compiler to componentize svg (Breaking change: `toSvelte` method no longer accepts a second parameter for options)
