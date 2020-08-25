@@ -49,29 +49,36 @@ export async function generateFromFolder(
         return;
       }
 
-      generatedFiles.add(moduleName);
+      try {
+        const source = await readFile(filePath, "utf-8");
+        const template = toSvelte(source).template;
 
-      if (options.onModuleName) {
-        moduleName = options.onModuleName(moduleName);
+        const moduleFolder = path.join(process.cwd(), folder, moduleName);
+
+        await mkdir(moduleFolder);
+        await writeFile(
+          path.join(moduleFolder, "index.js"),
+          `import ${moduleName} from "./${moduleName}.svelte";\nexport { ${moduleName} };\nexport default ${moduleName};`
+        );
+
+        await writeFile(
+          path.join(moduleFolder, `${moduleName}.svelte`),
+          template
+        );
+
+        generatedFiles.add(moduleName);
+
+        if (options.onModuleName) {
+          moduleName = options.onModuleName(moduleName);
+        }
+
+        moduleNames.push(moduleName);
+        imports.push(`export { ${moduleName} } from "./${moduleName}";`);
+      } catch (e) {
+        process.stdout.write(
+          `Failed to generate "${moduleName}." Omitting...\n`
+        );
       }
-
-      moduleNames.push(moduleName);
-      imports.push(`export { ${moduleName} } from "./${moduleName}";`);
-
-      const moduleFolder = path.join(process.cwd(), folder, moduleName);
-
-      await mkdir(moduleFolder);
-      await writeFile(
-        path.join(moduleFolder, "index.js"),
-        `import ${moduleName} from "./${moduleName}.svelte";\nexport { ${moduleName} };\nexport default ${moduleName};`
-      );
-
-      const source = await readFile(filePath, "utf-8");
-
-      await writeFile(
-        path.join(moduleFolder, `${moduleName}.svelte`),
-        toSvelte(source).template
-      );
     });
 
   await writeFile(
