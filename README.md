@@ -72,6 +72,48 @@ const { generateFromFolder } = require("svg-to-svelte");
 })();
 ```
 
+### `generateIndex`
+
+The `generateIndex` method generates static documentation listing the module names for the library in Markdown format.
+
+```ts
+interface GenerateIndexOptions {
+  title?: string; // title of the generated markdown file
+  pkgName: string; // name of the Svelte package name
+  pkgVersion: string; // version of the Svelte icon library
+  moduleNames: ModuleNames; // module names returned by `generateFromFolder`
+  outputFile?: string; // name of the markdown output file
+  libraryFolder?: string; // name of the folder containing generated Svelte components
+}
+```
+
+```js
+const { generateIndex } = require("svg-to-svelte");
+const { name, devDependencies } = require("./package.json");
+
+(async () => {
+  const libraryFolder = "lib";
+
+  const {
+    moduleNames,
+  } = await generateFromFolder(
+    "node_modules/gestalt/src/icons",
+    libraryFolder,
+    { clean: true }
+  );
+
+  await generateIndex({
+    moduleNames,
+    pkgName: name,
+    pkgVersion: devDependencies["gestalt"],
+    outputFile: "ICON_INDEX.md",
+    libraryFolder,
+  });
+
+  // writes the file to "ICON_INDEX.md"
+})();
+```
+
 #### Options
 
 An optional third argument passed to `generateFromFolder` include:
