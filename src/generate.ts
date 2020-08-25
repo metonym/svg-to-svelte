@@ -53,6 +53,15 @@ export async function generateFromFolder(
         const source = await readFile(filePath, "utf-8");
         const template = toSvelte(source).template;
 
+        generatedFiles.add(moduleName);
+
+        if (options.onModuleName) {
+          moduleName = options.onModuleName(moduleName);
+        }
+
+        moduleNames.push(moduleName);
+        imports.push(`export { ${moduleName} } from "./${moduleName}";`);
+
         const moduleFolder = path.join(process.cwd(), folder, moduleName);
 
         await mkdir(moduleFolder);
@@ -65,15 +74,6 @@ export async function generateFromFolder(
           path.join(moduleFolder, `${moduleName}.svelte`),
           template
         );
-
-        generatedFiles.add(moduleName);
-
-        if (options.onModuleName) {
-          moduleName = options.onModuleName(moduleName);
-        }
-
-        moduleNames.push(moduleName);
-        imports.push(`export { ${moduleName} } from "./${moduleName}";`);
       } catch (e) {
         process.stdout.write(
           `Failed to generate "${moduleName}." Omitting...\n`
