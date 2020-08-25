@@ -17,6 +17,8 @@ export async function cleanDir(folder: string) {
   await mkdir(dir);
 }
 
+type ModuleNames = string[];
+
 export async function generateFromFolder(
   source_folder: string,
   folder: string = "lib",
@@ -85,4 +87,35 @@ export async function generateFromFolder(
   );
 
   return { moduleNames };
+}
+
+export async function generateIndex(opts: {
+  title?: string;
+  pkgName: string;
+  pkgVersion: string;
+  moduleNames: ModuleNames;
+  outputFile?: string;
+  libraryFolder?: string;
+}) {
+  const moduleNames = opts.moduleNames || [];
+  const index = `# ${opts.title || "Icon Index"}\n
+> ${moduleNames.length} icons from ${opts.pkgName}@${opts.pkgVersion}.\n
+## Usage\n
+\`\`\`html
+<script>
+  import Icon from "${opts.pkgName}/${
+    opts.libraryFolder || "lib"
+  }/{ModuleName}";
+</script>
+
+<Icon />
+\`\`\`\n
+## Icons by \`ModuleName\`\n
+${moduleNames.map((name) => `- ${name}`).join("\n")}\n`;
+
+  if (opts.outputFile !== undefined) {
+    await writeFile(opts.outputFile, index);
+  }
+
+  return { index };
 }
