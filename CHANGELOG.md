@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - inject script/styles
 - allow direction for adding a prop (i.e. before/after `$$restProps`)
 
+## [2.0.0](https://github.com/metonym/svg-to-svelte/releases/tag/v2.0.0) - 2020-08-25
+
+- use sync behavior
+- breaking change: by default, `generateFromFolder` will clean the output directory
+
 ## [1.1.2](https://github.com/metonym/svg-to-svelte/releases/tag/v1.1.2) - 2020-08-25
 
 - fix async behavior

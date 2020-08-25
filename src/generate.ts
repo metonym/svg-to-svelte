@@ -27,7 +27,7 @@ export async function generateFromFolder(
     onModuleName?: (moduleName: string) => string;
   } = {}
 ) {
-  if (options.clean) {
+  if (options.clean !== false) {
     await cleanDir(folder);
   }
 
@@ -50,7 +50,7 @@ export async function generateFromFolder(
       }
 
       try {
-        const source = await readFile(filePath, "utf-8");
+        const source = fs.readFileSync(filePath, "utf-8");
         const template = toSvelte(source).template;
 
         generatedFiles.add(moduleName);
@@ -64,13 +64,12 @@ export async function generateFromFolder(
 
         const moduleFolder = path.join(process.cwd(), folder, moduleName);
 
-        await mkdir(moduleFolder);
-        await writeFile(
+        fs.mkdirSync(moduleFolder);
+        fs.writeFileSync(
           path.join(moduleFolder, "index.js"),
           `import ${moduleName} from "./${moduleName}.svelte";\nexport { ${moduleName} };\nexport default ${moduleName};`
         );
-
-        await writeFile(
+        fs.writeFileSync(
           path.join(moduleFolder, `${moduleName}.svelte`),
           template
         );
