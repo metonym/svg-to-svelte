@@ -11,7 +11,7 @@
   },
   "scripts": {
     "develop": "tsnd --respawn --transpile-only src",
-    "test": "tsnd src/tests",
+    "test": "tsnd --transpile-only src/tests",
     "test:tdd": "tsnd --respawn --transpile-only src/tests",
     "prepack": "tsc"
   },

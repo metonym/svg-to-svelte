@@ -14,9 +14,3 @@ export function toModuleName(name: string) {
     })
     .join("");
 }
-
-export function mapProps(properties: Record<string, string>) {
-  return Object.keys(properties)
-    .map((property) => `${property}="${properties[property]}"`)
-    .join(" ");
-}
