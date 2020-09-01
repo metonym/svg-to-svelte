@@ -94,13 +94,12 @@ const { name, devDependencies } = require("./package.json");
 (async () => {
   const libraryFolder = "lib";
 
-  const {
-    moduleNames,
-  } = await generateFromFolder(
+  const { moduleNames } = await generateFromFolder(
     "node_modules/gestalt/src/icons",
-    libraryFolder,
-    { clean: true }
+    libraryFolder
   );
+
+  // generates components from `gestalt` into the "lib" folder
 
   await generateIndex({
     moduleNames,
@@ -120,8 +119,8 @@ An optional third argument passed to `generateFromFolder` include:
 
 ```ts
 interface GenerateFromFolderOptions {
-  clean: boolean; // remove and create output directory
-  onModuleName: (moduleName: string) => string; // called when the moduleName is created
+  clean: boolean; // remove and create output directory (default is `true`)
+  onModuleName: (moduleName: string) => string; // called when the `moduleName` is created
 }
 ```
 
