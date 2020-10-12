@@ -28,20 +28,13 @@ More generally, this utility experiments with augmenting plain HTML into Svelte.
 
 Icon libraries generated using `svg-to-svelte`:
 
-- **[svelte-atlastkit-icons](https://github.com/metonym/svelte-atlastkit-icons)** (Atlassian Atlaskit)
-
+- **[svelte-atlaskit-icons](https://github.com/metonym/svelte-atlaskit-icons)** (Atlassian Atlaskit)
 - **[svelte-baseui-icons](https://github.com/metonym/svelte-baseui-icons)**: (Uber Base Web)
-
 - **[svelte-bootstrap-icons](https://github.com/metonym/svelte-bootstrap-icons)** (Bootstrap)
-
 - **[svelte-eui-icons](https://github.com/metonym/svelte-eui-icons)** (Elastic EUI)
-
 - **[svelte-gestalt-icons](https://github.com/metonym/svelte-gestalt-icons)** (Pinterest Gestalt)
-
 - **[svelte-leafygreen-icons](https://github.com/metonym/svelte-leafygreen-icons)**: (MongoDB Leafygreen)
-
 - **[svelte-polaris-icons](https://github.com/metonym/svelte-polaris-icons)** (Shopify Polaris)
-
 - **[svelte-spectrum-icons](https://github.com/metonym/svelte-spectrum-icons)** (Adobe Spectrum)
 
 ## Install
