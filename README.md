@@ -36,6 +36,7 @@ Icon libraries generated using `svg-to-svelte`:
 - **[svelte-leafygreen-icons](https://github.com/metonym/svelte-leafygreen-icons)**: (MongoDB Leafygreen)
 - **[svelte-polaris-icons](https://github.com/metonym/svelte-polaris-icons)** (Shopify Polaris)
 - **[svelte-spectrum-icons](https://github.com/metonym/svelte-spectrum-icons)** (Adobe Spectrum)
+- **[svelte-super-tiny-icons](https://github.com/metonym/svelte-super-tiny-icons)** (Super Tiny Icons)
 
 ## Install
 
