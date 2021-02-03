@@ -107,6 +107,16 @@ const { name, devDependencies } = require("./package.json");
 })();
 ```
 
+### `generate`
+
+The `generate` method executes both the `generateFromFolder` and `generateIndex` functions.
+
+The only parameter it accepts is the path to the source folder.
+
+```js
+require("svg-to-svelte").generate("node_modules/gestalt/src/icons");
+```
+
 #### Options
 
 An optional third argument passed to `generateFromFolder` include:

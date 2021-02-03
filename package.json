@@ -16,12 +16,12 @@
     "prepack": "tsc"
   },
   "dependencies": {
-    "svelte": "^3.29.4"
+    "svelte": "^3.32.1"
   },
   "devDependencies": {
-    "@types/node": "^14.14.6",
-    "ts-node-dev": "1.0.0",
-    "typescript": "4.0.5"
+    "@types/node": "^14.14.23",
+    "ts-node-dev": "1.1.1",
+    "typescript": "4.1.3"
   },
   "repository": {
     "type": "git",

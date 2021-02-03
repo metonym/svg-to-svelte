@@ -125,3 +125,43 @@ ${moduleNames.map((name) => `- ${name}`).join("\n")}\n`;
 
   return { index };
 }
+
+
+const { name: pkgName, devDependencies } = require("./package.json");
+
+(async () => {
+  const lib = "bootstrap-icons";
+  const { moduleNames } = await generateFromFolder(`node_modules/${lib}/icons`);
+
+  await generateIndex({
+    moduleNames,
+    pkgName,
+    pkgVersion: devDependencies[lib],
+    outputFile: "ICON_INDEX.md",
+  });
+})();
+
+export async function generate(source_folder: string) {
+  const { moduleNames } = await generateFromFolder(source_folder);
+
+  console.log(`[generate] Created ${moduleNames.length} components from "${source_folder}".`);
+
+  const pkg_json = path.join(process.cwd(), 'package.json');
+
+  if (fs.existsSync(pkg_json)) {
+    const pkg = JSON.parse(fs.readFileSync(pkg_json, 'utf-8'));
+    const pkgName = pkg.name;
+    const pkgVersion = pkg.version;
+
+    console.log(`[generate] Creating icon index for ${pkgName}@${pkgVersion}`);
+
+    await generateIndex({
+      moduleNames,
+      pkgName,
+      pkgVersion,
+      outputFile: "ICON_INDEX.md",
+    });
+  } else {
+    console.log('[generate] Could not locate `package.json`')
+  }
+}
