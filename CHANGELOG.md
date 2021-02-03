@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - inject script/styles
 - allow direction for adding a prop (i.e. before/after `$$restProps`)
 
+## [2.1.1](https://github.com/metonym/svg-to-svelte/releases/tag/v2.1.1) - 2021-02-03
+
+- remove sample code
+
 ## [2.1.0](https://github.com/metonym/svg-to-svelte/releases/tag/v2.1.0) - 2021-02-03
 
 - add `generate` method
