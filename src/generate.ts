@@ -126,21 +126,6 @@ ${moduleNames.map((name) => `- ${name}`).join("\n")}\n`;
   return { index };
 }
 
-
-const { name: pkgName, devDependencies } = require("./package.json");
-
-(async () => {
-  const lib = "bootstrap-icons";
-  const { moduleNames } = await generateFromFolder(`node_modules/${lib}/icons`);
-
-  await generateIndex({
-    moduleNames,
-    pkgName,
-    pkgVersion: devDependencies[lib],
-    outputFile: "ICON_INDEX.md",
-  });
-})();
-
 export async function generate(source_folder: string) {
   const { moduleNames } = await generateFromFolder(source_folder);
 
