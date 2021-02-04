@@ -117,6 +117,14 @@ The only parameter it accepts is the path to the source folder.
 require("svg-to-svelte").generate("node_modules/gestalt/src/icons");
 ```
 
+#### CLI usage
+
+```sh
+svg-to-svelte --input=node_modules/gestalt/src/icons
+# OR
+s2s --input=node_modules/gestalt/src/icons
+```
+
 #### Options
 
 An optional third argument passed to `generateFromFolder` include:

@@ -37,6 +37,11 @@
     "library"
   ],
   "files": [
-    "dist"
-  ]
+    "dist",
+    "cli.js"
+  ],
+  "bin": {
+    "svg-to-svelte": "./cli.js",
+    "s2s": "./cli.js"
+  }
 }
