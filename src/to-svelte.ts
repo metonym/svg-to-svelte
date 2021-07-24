@@ -27,6 +27,6 @@ export function toSvelte(svg: string) {
   });
 
   return {
-    template: `<svg${svg_attributes} {...$$restProps} on:click on:mouseover on:mouseenter on:mouseleave on:keydown><slot />${svg_children}</svg>`,
+    template: `<!-- svelte-ignore a11y-mouse-events-have-key-events --><svg${svg_attributes} {...$$restProps} on:click on:mouseover on:mouseenter on:mouseleave on:keydown><slot />${svg_children}</svg>`,
   };
 }
