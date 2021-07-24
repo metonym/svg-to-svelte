@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - inject script/styles
 - allow direction for adding a prop (i.e. before/after `$$restProps`)
 
+## [2.2.1](https://github.com/metonym/svg-to-svelte/releases/tag/v2.2.1) - 2021-07-24
+
+- include missing `cli.js` in source control
+- ignore `a11y-mouse-events-have-key-events` warning
+
 ## [2.2.0](https://github.com/metonym/svg-to-svelte/releases/tag/v2.2.0) - 2021-02-03
 
 - add CLI wrapper for generate
