@@ -2,7 +2,6 @@
 /dist
 /node_modules
 /lib
-*.js
 .DS_Store
 yarn-debug.log*
 yarn-error.log*
